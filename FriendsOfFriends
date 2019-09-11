@@ -1,0 +1,108 @@
+import java.util.*;
+
+public class FriendsOfFriends {
+	static int [][] friends = new int [50][50];
+	static int n = 50;
+	
+	public static void main(String[] args) {
+		friends [2][6] = 1;
+		friends [6][2] = 1;
+		friends [6][1] = 1; 
+		friends [1][6] = 1; 
+		friends [6][7] = 1;
+		friends [7][6] = 1;
+		friends [6][5] = 1;
+		friends [5][6] = 1;
+		friends [6][4] = 1;
+		friends [4][6] = 1;
+		friends [6][3] = 1;
+		friends [3][6] = 1;
+		friends [3][5] = 1;
+		friends [5][3] = 1;
+		friends [3][4] = 1;
+		friends [4][3] = 1;
+		friends [4][5] = 1;
+		friends [5][4] = 1;
+		friends [7][8] = 1;
+		friends [8][7] = 1;
+		friends [9][8] = 1;
+		friends [8][9] = 1;
+		friends [9][10] = 1;
+		friends [10][9] = 1;
+		friends [10][11] = 1;
+		friends [11][10] = 1;
+		friends [11][12] = 1;
+		friends [12][11] = 1;
+		friends [12][13] = 1;
+		friends [13][12] = 1;
+		friends [12][9] = 1;
+		friends [9][12] = 1;
+		friends [13][14] = 1;
+		friends [14][13] = 1;
+		friends [12][11] = 1;
+		friends [13][15] = 1;
+		friends [15][13] = 1;
+		friends [15][3] = 1;
+		friends [3][15] = 1;
+		friends [18][16] = 1;
+		friends [16][18] = 1;
+		friends [17][16] = 1;
+		friends [16][17] = 1;
+		friends [18][17] = 1;
+		friends [17][18] = 1;
+		
+		int [][] friends2 = friends;
+		
+		handling(friends2);
+		
+	}//main
+	
+	public static void handling(int [][] friends2) {
+		int x = 0;
+		int y = 0;
+		char command = ' ';
+		String temp;
+		String temp2;
+		Scanner in = new Scanner(System.in);
+		do {
+			String input = in.nextLine();
+			command = input.charAt(0);
+			x = input.charAt(2);
+			
+			if(input.charAt(3) == ' ') {
+				x += (int)input.charAt(3);
+				y = input.charAt(4);
+				temp = Character.toString(x);
+				
+			} else {
+				y = input.charAt(5); 
+				temp += input.charAt(2);
+			}
+			
+			
+		}while(command != 'q');
+		System.out.println(command);
+		System.exit(0);
+		in.close();
+	}//handling
+	
+	/*static void FloydWarshall(int W[][]) {
+		int[][] dist = new int[n][n];// will represent the weight of the shortest path from vertex i to vertex j
+		int i, j, k;
+
+		dist=W;
+
+			// Floyd-Warshall Algorithm O(n^3)
+			for (k = 0; k < n; k++)
+				for (j = 0; j < n; j++)
+					for (i = 0; i < n; i++)
+						// If vertex k is on the shortest path from
+						// i to j, then update the value of dist[i][j]
+						if (dist[i][k] + dist[k][j] < dist[i][j]) {
+							dist[i][j] = dist[i][k] + dist[k][j];
+						}
+		
+
+	}//FloydWarshall*/
+
+}//ProgEx4
