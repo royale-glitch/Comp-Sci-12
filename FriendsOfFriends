@@ -2,7 +2,6 @@ import java.util.*;
 
 public class FriendsOfFriends {
 	static int [][] friends = new int [50][50];
-	static int n = 50;
 	
 	public static void main(String[] args) {
 		friends [2][6] = 1;
@@ -51,58 +50,41 @@ public class FriendsOfFriends {
 		friends [18][17] = 1;
 		friends [17][18] = 1;
 		
-		int [][] friends2 = friends;
 		
-		handling(friends2);
+		stringProcessing(friends);
 		
 	}//main
 	
-	public static void handling(int [][] friends2) {
+	public static void stringProcessing(int [][] friends) {
 		int x = 0;
 		int y = 0;
+		String [] comps = new String[3];
 		char command = ' ';
-		String temp;
-		String temp2;
+		char temp = ' ';
+		String temp1 = "";
+		String temp2 = "";
 		Scanner in = new Scanner(System.in);
 		do {
 			String input = in.nextLine();
 			command = input.charAt(0);
-			x = input.charAt(2);
-			
-			if(input.charAt(3) == ' ') {
-				x += (int)input.charAt(3);
-				y = input.charAt(4);
-				temp = Character.toString(x);
-				
-			} else {
-				y = input.charAt(5); 
-				temp += input.charAt(2);
+			comps = input.split("");
+			temp1 = input[2];
+			if(command == 'q') {//if command is to quit
+			System.out.println(command);
+			in.close();
+			System.exit(0);
 			}
 			
+			else {
+
+				y = input.charAt(5); 
+				temp1 = Character.toString(temp);
+			}
 			
-		}while(command != 'q');
-		System.out.println(command);
-		System.exit(0);
-		in.close();
-	}//handling
-	
-	/*static void FloydWarshall(int W[][]) {
-		int[][] dist = new int[n][n];// will represent the weight of the shortest path from vertex i to vertex j
-		int i, j, k;
-
-		dist=W;
-
-			// Floyd-Warshall Algorithm O(n^3)
-			for (k = 0; k < n; k++)
-				for (j = 0; j < n; j++)
-					for (i = 0; i < n; i++)
-						// If vertex k is on the shortest path from
-						// i to j, then update the value of dist[i][j]
-						if (dist[i][k] + dist[k][j] < dist[i][j]) {
-							dist[i][j] = dist[i][k] + dist[k][j];
-						}
+			x = Integer.parseInt(temp1);
+			y = Integer.parseInt(temp2);
+		}while(true);
 		
-
-	}//FloydWarshall*/
+	}//handling
 
 }//ProgEx4
