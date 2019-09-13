@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class ProgEx4 {
+public class FriendsOfFriends {
 	static int [][] friends = new int [50][50];
 	
 	public static void main(String[] args) {
@@ -34,14 +34,16 @@ public class ProgEx4 {
 	static void stringProcessing(int [][] friends) {
 		int x = 0;
 		int y = 0;
-		int frCounter = 0;
-		String [] comps = new String[3];//components of input
+		int frCounter = 0;		
+		int [][] friendsCopy = Arrays.copyOf(int[][] friends, friends.length);
 		char command = ' ';//function
+		String [] comps = new String[3];//components of input
 		String temp1 = "";
 		String temp2 = "";
 		Scanner in = new Scanner(System.in);
+		
 		do {
-			System.out.println("Please enter a command: ");
+			System.out.println("Please enter a command:\n ");
 			String input = in.nextLine();
 			command = input.charAt(0);
 				if(command == 'q') {
@@ -53,38 +55,59 @@ public class ProgEx4 {
 			comps = input.split(" ");
 			temp1 = comps[1];//index 1 = temp1
 			x = Integer.parseInt(temp1);//parsing
+			
+			//second parameter only if necessary
 			if(command != 'n' && command != 'f') {
 				temp2 = comps[2];//index 2 = temp2
 				y = Integer.parseInt(temp2);//parsing			
-			}
-			
-					
+			}					
 			
 			switch(command) {				
 				case 'i': friends[x][y] = friends[y][x] = 1;//make a friendship
 				break;
 				case 'd': friends[x][y] = friends[y][x] = 0;//break a friendship
 				break;
-				case 'n'://output the number of friends
-					
+				case 'n'://output the number of friends					
 						for(int i = 0;i < friends.length; i++) {
 							if(friends[x][i] == 1){
 								frCounter++;
 							}
-						}//inner for						
-					
+						}//inner for		
 					System.out.println("# of friends: " + frCounter);
 				break;
-				case 's':;//output the degree of separation
+				case 's':floydWarshall(friendsCopy);//output the degree of separation
+					
 				break;
-				case 'f':;//output the "friends of friends"
+				case 'f':floydWarshall(friendsCopy);//output the "friends of friends"
 				break;
 				default: 
 				System.out.println("Command does not exist.");
 			
-			}//switch command			
+			}//switch command	
+			
+			
 			
 		}while(true);
 	}//stringProcessing
+	
+	static void floydWarshall(int[][] friendsCopy) {
+		int path = 0;
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		for(i = 1;i < friendsCopy.length; i++) {
+			for(j = 1;j < friendsCopy.length; j++) {
+				for(k = 1;k < friendsCopy.length; k++) {
+					friendsCopy[i][j] = Math.min( friendsCopy[i][j], friendsCopy[i][k] + friendsCopy[k][j]);
+					
+				}//inner for
+			}//middle for  			
+		}//outer loop
+		
+		path = friendsCopy[i][j];
+		
+		
+		
+	}//FloydWarshall
 
 }//ProgEx4
