@@ -1,90 +1,87 @@
 import java.util.*;
 
-public class FriendsOfFriends {
+public class ProgEx4 {
 	static int [][] friends = new int [50][50];
 	
 	public static void main(String[] args) {
-		friends [2][6] = 1;
-		friends [6][2] = 1;
-		friends [6][1] = 1; 
-		friends [1][6] = 1; 
-		friends [6][7] = 1;
-		friends [7][6] = 1;
-		friends [6][5] = 1;
-		friends [5][6] = 1;
-		friends [6][4] = 1;
-		friends [4][6] = 1;
-		friends [6][3] = 1;
-		friends [3][6] = 1;
-		friends [3][5] = 1;
-		friends [5][3] = 1;
-		friends [3][4] = 1;
-		friends [4][3] = 1;
-		friends [4][5] = 1;
-		friends [5][4] = 1;
-		friends [7][8] = 1;
-		friends [8][7] = 1;
-		friends [9][8] = 1;
-		friends [8][9] = 1;
-		friends [9][10] = 1;
-		friends [10][9] = 1;
-		friends [10][11] = 1;
-		friends [11][10] = 1;
-		friends [11][12] = 1;
-		friends [12][11] = 1;
-		friends [12][13] = 1;
-		friends [13][12] = 1;
-		friends [12][9] = 1;
-		friends [9][12] = 1;
-		friends [13][14] = 1;
-		friends [14][13] = 1;
-		friends [12][11] = 1;
-		friends [13][15] = 1;
-		friends [15][13] = 1;
-		friends [15][3] = 1;
-		friends [3][15] = 1;
-		friends [18][16] = 1;
-		friends [16][18] = 1;
-		friends [17][16] = 1;
-		friends [16][17] = 1;
-		friends [18][17] = 1;
-		friends [17][18] = 1;
-		
+		friends [2][6] = friends [6][2] =  1;
+		friends [6][1] = friends [1][6] =  1; 		 
+		friends [7][6] = friends [6][7] = 1;		
+		friends [5][6] = friends [6][5] = 1;		
+		friends [4][6] = friends [6][4] = 1;		
+		friends [3][6] = friends [6][3] = 1;		 
+		friends [5][3] = friends [3][5] = 1;		
+		friends [4][3] = friends [3][4] = 1;		
+		friends [5][4] = friends [4][5] = 1;		
+		friends [8][7] = friends [7][8] = 1;		
+		friends [8][9] = friends [9][8] = 1;		
+		friends [10][9] = friends [9][10] = 1;
+		friends [11][10] = friends [10][11] = 1;		
+		friends [12][11] = friends [11][12] = 1;		
+		friends [13][12] = friends [12][13] = 1;		
+		friends [9][12] = friends [12][9] = 1;		
+		friends [14][13] = friends [13][14] = 1;		
+		friends [13][15] = friends [15][13] = 1;
+		friends [15][3] = friends [3][15] = 1;
+		friends [18][16] = friends [16][18] = 1;
+		friends [17][16] = friends [16][17] = 1;
+		friends [18][17] = friends [17][18] = 1;		
 		
 		stringProcessing(friends);
 		
 	}//main
 	
-	public static void stringProcessing(int [][] friends) {
+	static void stringProcessing(int [][] friends) {
 		int x = 0;
 		int y = 0;
-		String [] comps = new String[3];
-		char command = ' ';
-		char temp = ' ';
+		int frCounter = 0;
+		String [] comps = new String[3];//components of input
+		char command = ' ';//function
 		String temp1 = "";
 		String temp2 = "";
 		Scanner in = new Scanner(System.in);
 		do {
+			System.out.println("Please enter a command: ");
 			String input = in.nextLine();
 			command = input.charAt(0);
-			comps = input.split("");
-			temp1 = input[2];
-			if(command == 'q') {//if command is to quit
-			System.out.println(command);
-			in.close();
-			System.exit(0);
-			}
+				if(command == 'q') {
+				System.out.println("Quitting program...");
+				in.close();
+				System.exit(0);
+				}//quit the program
+				
+			comps = input.split(" ");
+			temp1 = comps[1];//index 1 = temp1
+			temp2 = comps[2];//index 2 = temp2
+			x = Integer.parseInt(temp1);//parsing
+			y = Integer.parseInt(temp2);//parsing
+	
 			
-			else {
-
-				y = input.charAt(5); 
-				temp1 = Character.toString(temp);
-			}
+			switch(command) {				
+				case 'i': friends[x][y] = friends[y][x] = 1;//make a friendship
+				break;
+				case 'd': friends[x][y] = friends[y][x] = 0;//break a friendship
+				break;
+				case 'n'://output the number of friends
+					for(int i = 0; i < friends.length; i++) {
+						for(int j = 0;j < friends[i].length; j++) {
+							if(friends[i][j] == 1){
+								frCounter++;
+							}
+						}//inner for						
+					}//outer for
+					System.out.println("# of friends: " + frCounter);
+				break;
+				case 's':;//output the degree of separation
+				break;
+				case 'f':;//output the "friends of friends"
+				break;
+				default: 
+				System.out.println("Command does not exist.");
 			
-			x = Integer.parseInt(temp1);
-			y = Integer.parseInt(temp2);
+			}//switch command			
+			
 		}while(true);
-		
-	}//handling
+	}//stringProcessing
 
 }//ProgEx4
