@@ -1,12 +1,20 @@
 public class Fractions {
     private int p;
     private int q;
+    
+    Fractions(){
+    	p = 0;
+    	q = 1;
+    }
 
 	public Fractions(int myP, int myQ) {
 		this.p = myP;
 		if(myQ == 0) {
 		this.q = 1;
-		} else {this.q = myQ;}
+		} else if(myQ < 0){
+			this.p *= -1;
+			this.q *= -1;
+		}else {this.q = myQ;}
 		GCD();
 	}//Fractions constructor
 
@@ -17,32 +25,29 @@ public class Fractions {
 
 	public int getP() {
 		return this.p;
-	}//getp
+	}//getP
 
 	public int getQ() {
 		return this.q;
-	}//getq
+	}//getQ
 	
 	//multiplies two fractions
-	public static String Multiply(Fractions myFraction, Fractions myFraction2) {
-		String output = "";
+	public static Fractions Multiply(Fractions myFraction, Fractions myFraction2) {
 		
-		myFraction.p *= myFraction2.p;
-		myFraction.q *= myFraction2.q;
-		output = myFraction.p + "/" + myFraction.q;		
-		return output;	
+		int newP = myFraction.p * myFraction2.p;
+		int newQ = myFraction.q * myFraction2.q;
+		Fractions frac = new Fractions(newP, newQ);	
+		return frac;	
 		
 	}//Multiply
 	
-	public static String add(Fractions myFraction, Fractions myFraction2) {
+	//add Fractions
+	public static Fractions add(Fractions myFraction, Fractions myFraction2) {
 		
-		String output = "";
-		myFraction.p *= myFraction2.q;
-		myFraction2.p *= myFraction.q;
-		myFraction.q *= myFraction2.q;
-		Fractions aFrac = new Fractions((myFraction.p + myFraction2.p), myFraction.q);
-		output = aFrac.p + "/" + aFrac.q;
-		return output;
+		int newP = myFraction.p * myFraction2.q + myFraction2.p * myFraction.q;
+		int newQ = myFraction.q * myFraction2.q;
+		Fractions aFrac = new Fractions(newP, newQ);
+		return aFrac;
 		
 	}//add
 	
