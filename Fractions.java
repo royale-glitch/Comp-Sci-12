@@ -1,43 +1,71 @@
 public class Fractions {
-private int numerator, denominator;
+    private int p;
+    private int q;
 
-	public Fractions(int myNumerator, int myDenominator) {
-		this.numerator = myNumerator;
-		this.denominator = myDenominator;
+	public Fractions(int myP, int myQ) {
+		this.p = myP;
+		if(myQ == 0) {
+		this.q = 1;
+		} else {this.q = myQ;}
+		GCD();
 	}//Fractions constructor
 
 	public double getDouble() {
-		double total = this.numerator * 1.0/this.denominator;
+		double total = this.p * 1.0/this.q;
 		return total;
 	}//getDouble
 
-	public int getNumerator() {
-		return this.numerator;
-	}//getNumerator
+	public int getP() {
+		return this.p;
+	}//getp
 
-	public int getDenominator() {
-		return this.denominator;
-	}//getDenominator
+	public int getQ() {
+		return this.q;
+	}//getq
 	
-	//not printing
+	//multiplies two fractions
 	public static String Multiply(Fractions myFraction, Fractions myFraction2) {
 		String output = "";
-		myFraction.numerator *= myFraction2.numerator;
-		myFraction.denominator*= myFraction2.denominator;
-		output = myFraction.numerator + "/" + myFraction.denominator;
+		
+		myFraction.p *= myFraction2.p;
+		myFraction.q *= myFraction2.q;
+		output = myFraction.p + "/" + myFraction.q;		
 		return output;	
 		
 	}//Multiply
 	
-	//reduces fractions to lowest terms
-	public void GCD(Fractions myFraction) {
+	public static String add(Fractions myFraction, Fractions myFraction2) {
 		
-		for(int i = 1; i <= myFraction.numerator && i <= myFraction.denominator ; i++) {
-			if(myFraction.numerator % i == 0 && myFraction.denominator % i == 0) {
-				myFraction.numerator /= i;
-				myFraction.denominator /= i;
+		String output = "";
+		myFraction.p *= myFraction2.q;
+		myFraction2.p *= myFraction.q;
+		myFraction.q *= myFraction2.q;
+		Fractions aFrac = new Fractions((myFraction.p + myFraction2.p), myFraction.q);
+		output = aFrac.p + "/" + aFrac.q;
+		return output;
+		
+	}//add
+	
+
+	//reduces fractions to lowest terms
+	private void GCD() {
+		int gcd = 1;
+		for(int i = 1; i <= this.p && i <= this.q; i++) {
+			if(this.p % i == 0 && this.q % i == 0) {
+					gcd = i;	
 			}//if
 		}//for
-	}//GCD	
+		this.p /= gcd;
+		this.q /= gcd;
+	}//GCD
 	
+	
+	//returns fraction as a string
+	public String toString() {
+		String fraction = this.p + "/" + this.q;
+		return fraction;
+	}
+	
+	
+		
 }//Fractions
