@@ -2,8 +2,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Prog_Ex 5???");
-	Fractions myFraction = new Fractions(14, 70);
-	Fractions myFraction2 = new Fractions(12, 3);
+	Fractions myFraction = new Fractions(96, 88);
+	Fractions myFraction2 = new Fractions(11, 132);
 
 	
 	//running methods for fraction 1
