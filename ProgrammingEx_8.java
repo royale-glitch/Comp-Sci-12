@@ -3,10 +3,12 @@ import java.io.*;
 
 public class ProgrammingEx_8 {	
 		//dictionary of top 2K words
-		static String [] dictionary = getFileContents("message.txt");
+		static String [] dictionary = getFileContents("dictionary.txt");
 		static String [] unCyphered = getFileContents("cypher.txt");
+		static PE8Obj [] objects= new PE8Obj[26];
     public static void main(String[] args) {  
-        fromCypher();        
+        fromCypher();  
+        top3();
 
      } // main
 
@@ -71,7 +73,7 @@ public class ProgrammingEx_8 {
     	 encrypt = txt.toCharArray();
     	 
 
-    	 for(int i = 0; i < 25; i++) {
+    	 for(int i = 0; i < 26; i++) {
 	    	 for(int j = 0; j < encrypt.length; j++) {
 	    		 if(encrypt[j] >= 65 && encrypt[j] <= 90) {
 	    			 encrypt[j] += key;
@@ -80,31 +82,38 @@ public class ProgrammingEx_8 {
 	    		 }//if
 	    		 System.out.print(encrypt[j]);
 	    	 }//inner for
-	    	 System.out.println(" ");
-	    	 for(int k = 0; k < encrypt.length; k++){
-	    		 text += encrypt[k];
-	    	 }
-	    	 dictionnaire(text);
+	    	 text = new String(encrypt);
+	    	 dictionary(text, i);
+	    	 objects[i].word = text;
 	    }//outer for
-    	 int score = dictionnaire(text);
-    	 System.out.println();
+    	 
+    	 
 
      }//fromCypher
      
-     public static int dictionnaire(String text) {
+     public static void dictionary(String text, int index) {
     	 int score = 0;
+    	 text = text.toLowerCase();
     	 String [] words = text.split(" ");
-    	 for(int i = 0; i < words.length; i++) {
+
+    	 
+    	 for(int i = 0; i < words.length; i++) {    		 
     		 for(int j = 0; j < dictionary.length; j++) {
     			 if(words[i].equals(dictionary[j])) {
         			 score++;
-        		 }
-    		 }//inner for
-    		 System.out.println();
+        			}//if
+    		 }//inner for    		 
     	 }//outer for
-    	 
-    	 
-    	 return score;
+	    System.out.println(score);
+    	objects[index].score = score;
+
      }//dictionnaire
+     
+     public static void top3() {
+    	 
+    	 
+    	 
+    	 
+     }
 
 }  // ProgrammingEx_8
