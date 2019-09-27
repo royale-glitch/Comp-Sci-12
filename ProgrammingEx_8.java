@@ -3,12 +3,15 @@ import java.io.*;
 
 public class ProgrammingEx_8 {	
 		//dictionary of top 2K words
-		static String [] dictionary = getFileContents("dictionary.txt");
-		static String [] unCyphered = getFileContents("cypher.txt");
-		static PE8Obj [] objects= new PE8Obj[26];
+		
     public static void main(String[] args) {  
-        fromCypher();  
-        top3();
+        
+		PE8Obj [] objects= new PE8Obj[26];
+		for(int i = 0; i < objects.length; i++) {
+			objects[i] = new PE8Obj();
+		}
+		fromCypher(objects);  
+        top3(objects);
 
      } // main
 
@@ -57,7 +60,9 @@ public class ProgrammingEx_8 {
 
      } // getFileContents
 
-     public static void fromCypher() {
+     public static void fromCypher(PE8Obj [] objects) {
+    	
+ 		String [] unCyphered = getFileContents("cypher.txt");
     	 String txt = "";
     	 String text = "";
     	 char [] encrypt = null;
@@ -83,15 +88,16 @@ public class ProgrammingEx_8 {
 	    		 System.out.print(encrypt[j]);
 	    	 }//inner for
 	    	 text = new String(encrypt);
-	    	 dictionary(text, i);
-	    	 objects[i].word = text;
+	    	 dictionary(text, i, objects);
+	    	 objects[i].setWord(text);
 	    }//outer for
     	 
     	 
 
      }//fromCypher
      
-     public static void dictionary(String text, int index) {
+     public static void dictionary(String text, int index, PE8Obj [] objects) {
+    	 String [] dictionary = getFileContents("dictionary.txt");
     	 int score = 0;
     	 text = text.toLowerCase();
     	 String [] words = text.split(" ");
@@ -105,11 +111,11 @@ public class ProgrammingEx_8 {
     		 }//inner for    		 
     	 }//outer for
 	    System.out.println(score);
-    	objects[index].score = score;
+    	objects[index].setScore(score);
 
      }//dictionnaire
      
-     public static void top3() {
+     public static void top3(PE8Obj [] objects) {
     	 
     	 
     	 
