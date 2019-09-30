@@ -1,28 +1,20 @@
-
-public class PE8Obj {
+public class PE8Obj{
 	private String word;
 	private int score;
 	
+	//default constructor for initializing objects
 	PE8Obj() {
 		this.word = "";
-		this.score = 0;
-		
+		this.score = 0;		
 	}
-		
-	public PE8Obj(String myWord, int myScore){
+	
+	public void setWord(String myWord) {
 		this.word = myWord;
-		this.score = myScore;	
 	}
 	
-	public void setWord(String word) {
-		this.word = word;
+	public void setScore(int myScore) {
+		this.score = myScore;
 	}
-	
-	public void setScore(int score) {
-		this.score = score;
-	}
-	
-	
 	
 	public String getWord() {
 		return this.word;
@@ -32,5 +24,4 @@ public class PE8Obj {
 		return this.score;
 	}
 	
-	
-}
+}//PE8Obj

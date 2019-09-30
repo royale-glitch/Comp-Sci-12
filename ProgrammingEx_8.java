@@ -1,18 +1,15 @@
-
 import java.io.*;
 
 public class ProgrammingEx_8 {	
-		//dictionary of top 2K words
 		
     public static void main(String[] args) {  
-        
 		PE8Obj [] objects= new PE8Obj[26];
 		for(int i = 0; i < objects.length; i++) {
 			objects[i] = new PE8Obj();
 		}
-		fromCypher(objects);  
-        top3(objects);
-
+		fromCypher(objects);
+		//Arrays.sort(objects);
+		printTop3(objects);
      } // main
 
      //  reads fileName and returns the contents as String array
@@ -62,15 +59,15 @@ public class ProgrammingEx_8 {
 
      public static void fromCypher(PE8Obj [] objects) {
     	
- 		String [] unCyphered = getFileContents("cypher.txt");
+ 		String [] cypherText = getFileContents("cypher.txt");
     	 String txt = "";
     	 String text = "";
     	 char [] encrypt = null;
     	 int key = 1;
     	 
     
-    	 for(int i = 0; i < unCyphered.length; i++) {
-    		 txt += unCyphered[i];
+    	 for(int i = 0; i < cypherText.length; i++) {
+    		 txt += cypherText[i];
     		 txt += " ";
     	 }
     	 
@@ -113,13 +110,22 @@ public class ProgrammingEx_8 {
 	    System.out.println(score);
     	objects[index].setScore(score);
 
-     }//dictionnaire
+     }//dictionary
      
-     public static void top3(PE8Obj [] objects) {
+     private static void printTop3(PE8Obj [] objects) {
+    	 PE8Obj [] top3 = new PE8Obj[3];
+    	 for(int i = 0; i < top3.length; i++) {
+    		 top3[i] = new PE8Obj();
+    	 }
+    	 for(int i = 0; i < top3.length; i++) {
+    		 top3[i] = objects[i];
+    	 }
     	 
-    	 
-    	 
-    	 
-     }
+    	 System.out.println("1." + top3[0].getWord());
+    	 System.out.println("2." + top3[1].getWord());
+    	 System.out.println("3." + top3[2].getWord());
+     }//printTop3
+     
+     
 
 }  // ProgrammingEx_8
