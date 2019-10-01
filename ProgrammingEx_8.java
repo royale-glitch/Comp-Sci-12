@@ -4,12 +4,29 @@ public class ProgrammingEx_8 {
 		
     public static void main(String[] args) {  
 		PE8Obj [] objects= new PE8Obj[26];
+		String [] iterations = new String[objects.length];
+   	 	int [] ranking = new int[objects.length];
+   	 	
+   	 	//initializing objects
 		for(int i = 0; i < objects.length; i++) {
 			objects[i] = new PE8Obj();
 		}
+		
 		fromCypher(objects);
-		//Arrays.sort(objects);
-		printTop3(objects);
+
+	   	 //Transferring the Strings from the object array into a String array
+	   	 for(int i = 0; i < objects.length; i++) {
+	   		 iterations[i] = objects[i].getWord();
+	   	 }
+	   	 //Transferring the integers from the object array into an integer array
+	   	 for(int i = 0; i < objects.length; i++) {
+	   		 ranking[i] = objects[i].getScore();
+	   	 }
+	   	 
+		bubbleSort(iterations, ranking);
+		System.out.println("1." + iterations[25]);
+		System.out.println("2." + iterations[24]);
+		System.out.println("3." + iterations[23]);
      } // main
 
      //  reads fileName and returns the contents as String array
@@ -82,7 +99,7 @@ public class ProgrammingEx_8 {
 	    		 } if(encrypt[j] > 90) {
 	    			 encrypt[j] -= 26;
 	    		 }//if
-	    		 System.out.print(encrypt[j]);
+	    		 //System.out.print(encrypt[j]);
 	    	 }//inner for
 	    	 text = new String(encrypt);
 	    	 dictionary(text, i, objects);
@@ -107,25 +124,33 @@ public class ProgrammingEx_8 {
         			}//if
     		 }//inner for    		 
     	 }//outer for
-	    System.out.println(score);
+	    //System.out.println(score);
     	objects[index].setScore(score);
 
      }//dictionary
      
-     private static void printTop3(PE8Obj [] objects) {
-    	 PE8Obj [] top3 = new PE8Obj[3];
-    	 for(int i = 0; i < top3.length; i++) {
-    		 top3[i] = new PE8Obj();
-    	 }
-    	 for(int i = 0; i < top3.length; i++) {
-    		 top3[i] = objects[i];
-    	 }
+     private static void bubbleSort(String[] iterations, int [] ranking) {
+    	 int temp = 0;
+    	 String temp2 = "";    	 
     	 
-    	 System.out.println("1." + top3[0].getWord());
-    	 System.out.println("2." + top3[1].getWord());
-    	 System.out.println("3." + top3[2].getWord());
-     }//printTop3
+    	 for(int i = 0; i < ranking.length; i++) {
+    		 for(int j = 1; j < ranking.length; j++){
+    			 if(ranking[j-1] > ranking[j]) {
+    				 //swap the integers
+    				 temp = ranking[j-1];
+    				 ranking[j-1] = ranking[j];
+    				 ranking[j] = temp;
+    				 //swap the Strings
+    				 temp2 = iterations[j-1];
+    				 iterations[j-1] = iterations[j];
+    				 iterations[j] = temp2;
+    			 }//if
+    		 }//inner for
+    	 }//outer for
+    	 for(int i = 0; i < ranking.length; i++) {
+    		 System.out.println(ranking[i]);
+    	 }
+    	
+     }//bubbleSort    
      
-     
-
 }  // ProgrammingEx_8
