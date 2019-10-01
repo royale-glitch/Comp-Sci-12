@@ -134,7 +134,7 @@ public class ProgrammingEx_8 {
     	 String temp2 = "";    	 
     	 
     	 for(int i = 0; i < ranking.length; i++) {
-    		 for(int j = 1; j < ranking.length; j++){
+    		 for(int j = 1; j < ranking.length - i; j++){
     			 if(ranking[j-1] > ranking[j]) {
     				 //swap the integers
     				 temp = ranking[j-1];
