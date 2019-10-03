@@ -1,93 +1,34 @@
 package addressbookpackage;
-
+import java.util.*;
 public class OneAddress {
-
-
-	private String firstName;
-	private String lastName;
-	private String streetAddress;
-	private String streetAddress2;
-	private String city;
-	private String province;
-	private String country;
-	private String postalCode;
+	ArrayList <AddressBook> addresses = new ArrayList<AddressBook>();
 	
-	//avoiding null pointer exceptions
-	OneAddress(){
-		this.firstName = "";
-		this.lastName = "";
-		this.streetAddress = "";
-		this.streetAddress2 = "";
-		this.city = "";
-		this.province = "";
-		this.country = "";
-		this.postalCode= "";
-	}
+	//checks if someone is in the book;
+	public boolean inBook(String firstName, String lastName) {
+		boolean isBook = false;
+		for(int i = 0; i < addresses.size(); i++) {
+			if(addresses.getFirstName() != null) {
+				
+			}
+		}
+		return isBook;
+	}//inBook
 	
-	public OneAddress(String myFirstName, String myLastName, String myStreetAddress, String myStreetAddress2, String myCity, String myProvince, String myCountry, String myPostalCode){
-		this.firstName = myFirstName;
-		this.lastName = myLastName;
-		this.streetAddress = myStreetAddress;
-		this.streetAddress2 = myStreetAddress2;
-		this.city = myCity;
-		this.province = myProvince;
-		this.country = myCountry;
-		this.postalCode= myPostalCode;
+	
+	
+	public void addAddress(String lastName, String firstName, String address, String address2, String city, String province,String country, String postalCode) {
+		AddressBook newBook = new AddressBook();
+		newBook.setFirstName(firstName);
+		newBook.setLastName(lastName);
+		newBook.setAddress(address);
+		newBook.setAddress2(address2);
+		newBook.setCity(city);
+		newBook.setProvince(province);
+		newBook.setCountry(country);
+		newBook.setPostalCode(postalCode);
+		addresses.add(newBook);
 		
-	}
+	}//addAddress
 	
-	//all getters
-	public String getFirstName() {
-		return this.firstName;
-	}
-	
-	public String getLastName() {
-		return this.lastName;
-	}
-	public String getStreetAddress() {
-		return this.streetAddress;
-	}
-	public String getStreetAddress2() {
-		return this.streetAddress2;
-	}
-	public String getCity() {
-		return this.city;
-	}
-	public String getProvince() {
-		return this.province;
-	}
-	public String getCountry() {
-		return this.country;
-	}
-	public String getPostalCode() {
-		return this.postalCode;
-	}
-	
-	//all setters
-	public void setFirstName(String myFirstName) {
-		this.firstName = myFirstName;
-	}
-	
-	public void setLastName(String myLastName) {
-		this.lastName = myLastName;
-	}
-	public void setStreetAddress(String myStreetAddress) {
-		this.streetAddress = myStreetAddress;
-	}
-	public void setStreetAddress2(String myStreetAddress) {
-		this.streetAddress2 = myStreetAddress;
-	}
-	public void setCity(String myCity) {
-		this.city = myCity;
-	}
-	public void setProvince(String myProvince) {
-		this.province = myProvince;
-	}
-	public void setCountry(String myCountry) {
-		this.country = myCountry;
-	}
-	public void setPostalCode(String myPostalCode) {
-		this.postalCode = myPostalCode;
-	}
-	
-}//oneAddress
+
+}//AddressBook
