@@ -84,7 +84,6 @@ public class OneAddress implements Comparable<OneAddress> {
 		this.country = myCountry;
 	}
 	public void setPostalCode(String myPostalCode) {
-
 		this.postalCode = myPostalCode;
 	}
 	

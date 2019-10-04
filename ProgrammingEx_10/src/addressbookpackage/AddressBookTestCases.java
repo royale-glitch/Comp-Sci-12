@@ -19,10 +19,14 @@ public class AddressBookTestCases {
     
     public static void main(String args[]) {    	
         AddressBook book = new AddressBook();
-        //addToBook(book);
+        addToBook(book);
         
-        book.addAddress("Narayan", "Surya", "3987 Gordon Head rd", "",  "Victoria", "BC", "Canada", "V8N 3X5");
-        book.printAddress("Narayan", "Surya");
+        book.addAddress("Narayan", "Surya", "3987 Gordon Head Rd", "",  "Victoria", "BC", "Canada", "V8N 3X5");
+        //book.printAddress("Narayan", "Surya");
+        book.addAddress("Secondary", "Mount Douglas", "3970 Gordon Head Rd", "", "Victoria", "BC", "Canada", "V8N 3X3");
+        //book.printAddress("Secondary", "Mount Douglas");
+        System.out.println(book.inBook("Narayan", "Surya"));
+        System.out.println(book.inBook("Dover", "Ben"));
         
         // Do the other tests here
     }
