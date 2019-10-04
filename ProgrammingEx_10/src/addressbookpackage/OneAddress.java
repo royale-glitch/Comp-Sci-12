@@ -1,9 +1,6 @@
-
-
 package addressbookpackage;
 
-public class OneAddress {
-
+public class OneAddress implements Comparable<OneAddress> {
 
 	private String firstName;
 	private String lastName;
@@ -90,6 +87,14 @@ public class OneAddress {
 	}
 	public void setPostalCode(String myPostalCode) {
 		this.postalCode = myPostalCode;
+	}
+	
+	public int compareTo(OneAddress a) {
+		if(lastName.compareToIgnoreCase(a.getLastName()) == 0 && firstName.compareToIgnoreCase(a.getFirstName()) == 0) {
+		return 0;
+		} else if(lastName.compareToIgnoreCase(a.getLastName()) > 0) {
+			return 1;
+		} else {return -1;}
 	}
 	
 }//oneAddress

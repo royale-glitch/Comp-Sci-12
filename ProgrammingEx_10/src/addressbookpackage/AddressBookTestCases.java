@@ -19,7 +19,7 @@ public class AddressBookTestCases {
     }*/
     
     public static void main(String args[]) {
-        AddressBook book = new AddressBook();
+        OneAddress book = new OneAddress();
         //addToBook(book);
         
         // Do the other tests here
