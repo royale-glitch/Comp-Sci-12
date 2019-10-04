@@ -1,9 +1,8 @@
 package addressbookpackage;
 
 public class AddressBookTestCases {
-	/*
-	static void addToBook(AddressBook book)
-    {
+	
+	static void addToBook(AddressBook book){
         book.addAddress("Vader", "Darth", "Sith Lord Office", null,
                         "The Death Star", "Galaxy", "Universe", "FFA");
         book.addAddress("Wong", "George", "308-3221 Village Green Way", null,
@@ -16,11 +15,14 @@ public class AddressBookTestCases {
                         "Silverdale", "WA", "USA", "98383");
         book.addAddress("Dog", "Scottie", "Carnegie Mellon University",
                         "5000 Forbes Ave", "Pittsburgh", "PA", "USA", "15213");
-    }*/
+    }
     
-    public static void main(String args[]) {
-        OneAddress book = new OneAddress();
+    public static void main(String args[]) {    	
+        AddressBook book = new AddressBook();
         //addToBook(book);
+        
+        book.addAddress("Narayan", "Surya", "3987 Gordon Head rd", "",  "Victoria", "BC", "Canada", "V8N 3X5");
+        book.printAddress("Narayan", "Surya");
         
         // Do the other tests here
     }

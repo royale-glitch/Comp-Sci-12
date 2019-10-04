@@ -5,7 +5,7 @@ public class AddressBook {
 	private ArrayList <OneAddress> addressBook = new ArrayList<OneAddress>();
 	
 	//checks if someone is in the book;
-	public boolean inBook(String firstName, String lastName) {
+	public boolean inBook(String lastName, String firstName) {
 		boolean isBook = false;
 		
 		for(OneAddress i : addressBook) {
@@ -30,28 +30,28 @@ public class AddressBook {
 	
 	//Removes an address from the address book
 	//given the first and last name
-	public void removeAddress(String firstName, String lastName) {
+	public void removeAddress(String lastName, String firstName) {
 		
 		for(OneAddress i : addressBook) {
 			if(i.getFirstName().equals(firstName) && i.getLastName().equals(lastName)) {
 				addressBook.remove(i);
+				break;
 			}
-		}
-		
-		
+		}		
 	}//removeAddress
 	
 	//Prints to the console a "mailing label" for a 
 	//single address given the first and last name.
-	public void printAddress(String firstName, String lastName) {
+	public void printAddress(String lastName, String firstName) {
 		
 		for(OneAddress i : addressBook) {
+			System.out.println(i.getFirstName() + " " +firstName +  " " + i.getLastName() + lastName );
 			if(i.getFirstName().equals(firstName) && i.getLastName().equals(lastName)) {
-				System.out.println(i.getLastName() + ", " + i.getFirstName() + "\n" + i.getStreetAddress());
-				if(i.getStreetAddress2() != null) {
-					System.out.print(i.getStreetAddress2());
+				System.out.println(i.getFirstName() + ", " + i.getLastName() + "\n" + i.getStreetAddress());
+				if(i.getStreetAddress2() != null || i.getStreetAddress2().equals("")) {
+					System.out.print(", " + i.getStreetAddress2());
 				}
-				System.out.print(i.getCity() + ", " + i.getProvince() + ", " + i.getCountry() + " " + i.getPostalCode());
+				System.out.println(i.getCity() + ", " + i.getProvince() + ", " + i.getCountry() + ",  " + i.getPostalCode());
 			}
 		}
 	}//printAddress
@@ -67,7 +67,7 @@ public class AddressBook {
 	
 	//Prints to the console a list of mailing labels, 
 	//ordered by name. (last name, then first name.)
-	public void printAll() {//TODO: implement comparable interface
+	public void printAll() {
 		for(OneAddress i : addressBook) {
 			System.out.println(i.getLastName() + ", "  + i.getFirstName() + "\n" + i.getStreetAddress());
 			if(i.getStreetAddress2() != null) {
@@ -79,5 +79,9 @@ public class AddressBook {
 		
 		
 	}//printTable
+	
+	public void sort() {
+		Collections.sort(addressBook);
+	}
 
 }//AddressBook
