@@ -13,8 +13,8 @@ public class OneAddress implements Comparable<OneAddress> {
 	
 	//default constructor
 	OneAddress(){
-		this.firstName = "";
 		this.lastName = "";
+		this.firstName = "";
 		this.address = "";
 		this.address2 = "";
 		this.city = "";
@@ -24,8 +24,8 @@ public class OneAddress implements Comparable<OneAddress> {
 	}
 	
 	public OneAddress(String myLastName, String myFirstName, String myAddress, String myAddress2, String myCity, String myProvince, String myCountry, String myPostalCode){
-		this.firstName = myFirstName;
 		this.lastName = myLastName;
+		this.firstName = myFirstName;		
 		this.address = myAddress;
 		this.address2 = myAddress2;
 		this.city = myCity;
@@ -38,7 +38,8 @@ public class OneAddress implements Comparable<OneAddress> {
 	//all getters
 	public String getFirstName() {
 		return this.firstName;
-	}	
+	}
+	
 	public String getLastName() {
 		return this.lastName;
 	}
@@ -64,7 +65,8 @@ public class OneAddress implements Comparable<OneAddress> {
 	//all setters
 	public void setFirstName(String myFirstName) {
 		this.firstName = myFirstName;
-	}	
+	}
+	
 	public void setLastName(String myLastName) {
 		this.lastName = myLastName;
 	}
