@@ -62,7 +62,7 @@ public class AddressBook {
 		
 		//formatting the Strings
 		for(OneAddress i : addressBook) {
-			System.out.printf("%-19s%-20s%-4s", i.getLastName(), i.getFirstName(), i.getCountry() + "\n");			
+			System.out.printf("%-19s%-20s%s", i.getLastName(), i.getFirstName(), i.getCountry() + "\n");			
 		}
 		
 	}//printTable
