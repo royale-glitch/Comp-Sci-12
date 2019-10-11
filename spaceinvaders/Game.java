@@ -28,7 +28,7 @@ public class Game extends Canvas {
         private Entity ship;  // the ship
         private double moveSpeed = 600; // hor. vel. of ship (px/s)
         private long lastFire = 0; // time last shot fired
-        private long firingInterval = 300; // interval between shots (ms)
+        private long firingInterval = 120; // interval between shots (ms)
         private int alienCount; // # of aliens left on screen
 
         private String message = ""; // message to display while waiting
@@ -177,10 +177,12 @@ public class Game extends Canvas {
           entities.add(shot);
         } // tryToFire
         
-
         public void jump() {
-      	  entities.setVerticalMovement(entities.getVerticalMovement + 50);
+        	Entity entity = (Entity) entities.get(0);
+        	entity.setVerticalMovement(50.0);
         }
+        
+
 
 	/*
 	 * gameLoop
